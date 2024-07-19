@@ -1,42 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 
-* body {
+* {
     margin: 0;
-    height:100%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100%;
     background-color: #FFFAFA;
     font-family: 'Montserrat', sans-serif;
 }
 
+html, body {
+    scroll-behavior: smooth; /* Smooth scrolling */
+    width: 100%;
+    height: 100%;
+}
+
 .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
+    flex-direction: column;
     width: 100%;
-    text-align: center; /* Center text content */
+    height: 200vh;
 }
 
 .intro-box {
     display: flex;
-    flex-direction: column; /* Stack children vertically */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh; /* Full viewport height */
+    width: 100%;
     padding: 20px;
+    padding: 20px;
+    background-color: #ffffff; /* Light background for intro section */
     border-radius: 10px;
 }
 
 .intro-box h1 {
-    margin: 0 0 20px 0;
+    margin-bottom: 20px;
 }
 
 .intro-box p {
     margin: 10px 0;
+    text-align: center;
 }
 
 .intro-box img {
     margin: 5px 0;
-    height: 200px; /* Set the desired height */
-    width: 100%; /* Ensures the width is 100% of the parent */
+    height: 200px;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -54,4 +69,71 @@
 
 .intro-box button:hover {
     background-color: #cd523c;
+}
+
+.content-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.text-box {
+    flex: 1;
+    background-color: #ffffff; /* Background color for text section */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-box h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.text-box textarea {
+    width: 100%;
+    max-width: 600px;
+    height: 500px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: none;
+}
+
+.text-box p {
+    font-size: 14px;
+    color: #555;
+}
+
+.text-box button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF6347;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.text-box button:hover {
+    background-color: #cd523c;
+}
+
+.result-box {
+    /* display: none; */
+    width: 30%;
+    max-width: 300px;
+    padding: 20px;
+    background: #ffffff;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-box h2 {
+    margin: 0;
 }
