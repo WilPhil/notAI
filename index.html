@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>notAI</title>
+    <title>HumanOrAI?</title>
 </head>
 <body>
     <div class="container">
@@ -33,8 +33,28 @@
             <div class = "result-box" id="result-box">
                 <h2 id = "result-title">
                     Result <br>
-                    ->
+                    >>
                 </h2>
+                <div class = "result-table" id = "result-table">
+                    <table>
+                        <tr>
+                            <td id="analysis-result">
+                                80% <br>
+                                <p>AI-generated text</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="highlight">
+                                Highlighted Text: <br> <br>
+                                <p>
+                                    Yellow - Likely AI-generated text <br>
+                                    Green - Likely Human-written text <br>
+                                    None - Neutral
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

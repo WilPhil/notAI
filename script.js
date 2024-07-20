@@ -19,6 +19,7 @@ document.getElementById('scan-button').addEventListener('click', function() {
         return;
     } else {
         document.getElementById('text-area-title').style.display = 'none';
-        // document.getElementById('result-box').style.display = 'block';
+        document.getElementById('result-box').style.display = 'flex';
+        document.getElementById('text-box').classList.add('half-size');
     }
 });
