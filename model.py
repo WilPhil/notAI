@@ -80,8 +80,6 @@ class GPT2PPLV2:
         sentence = args[0]
         if version == "v1.1":
             return self.call_1_1(sentence, args[1])
-        elif version == "v1":
-            return self.call_1(sentence)
         else:
             return "Model version not defined"
 
@@ -226,6 +224,7 @@ class GPT2PPLV2:
         probs = []
         final_lines = []
         labels = []
+        highlights = []
         for line in lines:
             if re.search("[a-zA-Z0-9]+", line) == None:
                 continue
@@ -239,17 +238,19 @@ class GPT2PPLV2:
                 labels.append(1)
                 prob = "{:.2f}%\n(A.I.)".format(normCdf(abs(self.threshold - score)) * 100)
                 probs.append(prob)
+                highlights.append(('ai', line))
             else:
                 labels.append(0)
                 prob = "{:.2f}%\n(Human)".format(normCdf(abs(self.threshold - score)) * 100)
                 probs.append(prob)
+                highlights.append(('human', line))
 
         mean_score = sum(scores)/len(scores)
 
         mean_prob = normCdf(abs(self.threshold - mean_score)) * 100
         label = 0 if mean_score > self.threshold else 1
         print(f"probability for {'A.I.' if label == 0 else 'Human'}:", "{:.2f}%".format(mean_prob))
-        return {"prob": "{:.2f}%".format(mean_prob), "label": label}, self.getVerdict(mean_score)
+        return {"prob": "{:.2f}%".format(mean_prob), "label": label}, self.getVerdict(mean_score), highlights
 
     def getLogLikelihood(self,sentence):
         encodings = self.tokenizer(sentence, return_tensors="pt")

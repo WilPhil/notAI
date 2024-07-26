@@ -15,12 +15,15 @@ def predict():
     if not text:
         return jsonify({'error': 'No text provided'}), 400
     
-    result, verdict = model.call_1_1(text, chunk_value=50)
+    result, verdict, highlights= model.call_1_1(text, chunk_value=15)
+
+    print("Model Highlights:", highlights)
 
     return jsonify({
         'prob': result['prob'],
         'label': result['label'],
-        'verdict': verdict
+        'verdict': verdict,
+        'highlights': highlights
     })
 
 if __name__ == '__main__':

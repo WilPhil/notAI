@@ -96,7 +96,7 @@ html, body {
     text-align: center;
 }
 
-.text-box textarea {
+.text-box .text-area {
     width: 100%;
     max-width: 600px;
     height: 500px;
@@ -104,7 +104,10 @@ html, body {
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
+    color: black;
     resize: none;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 
 .text-box p {
@@ -177,6 +180,11 @@ html, body {
     height: 170px;
 }
 
+.result-box .result-table tr:nth-child(2) {
+    height: 300px;
+    vertical-align: middle;
+}
+
 /* Remove left border from the first cell of each row */
 .result-box .result-table th:first-child, 
 .result-box .result-table td:first-child {
@@ -225,6 +233,10 @@ html, body {
     max-width: 90%; /* Adjust the max-width as needed */
 }
 
+#highlight-color {
+    padding: 5px;
+}
+
 #loading {
     display: none;
     position: fixed;
@@ -250,4 +262,12 @@ html, body {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.ai-text {
+    background-color: yellow;
+}
+
+.human-text {
+    background-color: lightgreen;
 }

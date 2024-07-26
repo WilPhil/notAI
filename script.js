@@ -4,16 +4,23 @@ document.getElementById('get-started-button').addEventListener('click', function
 
 const textArea = document.getElementById('text-area');
 const charCountDisplay = document.getElementById('char-count');
-const maxLength = textArea.getAttribute('maxlength');
+const maxLength = 1000;
 
 textArea.addEventListener('input', function() {
-    charCountDisplay.textContent = `${textArea.value.length}/${maxLength}`;
+    const textLength = textArea.textContent.length;
+    charCountDisplay.textContent = `${textLength}/${maxLength}`;
+
+    if (textLength > maxLength) {
+        const truncatedText = textArea.textContent.substring(0, maxLength);
+        textArea.textContent = truncatedText;
+        charCountDisplay.textContent = `${maxLength}/${maxLength}`;
+    }
 });
 
 charCountDisplay.textContent = `0/${maxLength}`;
 
 document.getElementById('scan-button').addEventListener('click', async function() {
-    const text = textArea.value;
+    const text = textArea.textContent;
     if (text.length === 0) {
         alert('Please enter some text!');
         return;
@@ -40,6 +47,20 @@ document.getElementById('scan-button').addEventListener('click', async function(
         document.getElementById('text-area-title').style.display = 'none';
         document.getElementById('result-box').style.display = 'flex';
         document.getElementById('text-box').classList.add('half-size');
+
+        const highlights = result.highlights;
+        let highlightedText = ' ';
+        highlights.forEach(([type, chunk]) => {
+            if (type == 'ai') {
+                highlightedText += `<span class="ai-text">${chunk}</span>`;
+            } else if (type == 'human') {
+                highlightedText += `<span class="human-text">${chunk}</span>`;
+            } else {
+                highlightedText += `${chunk}`;
+            }
+        });
+
+        textArea.innerHTML = highlightedText;
 
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
